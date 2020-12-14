@@ -10,8 +10,18 @@ export default makeStyles((theme) => ({
   heading: {
     color: 'rgba(207, 91, 108)',
   },
+  textfield: {
+    marginTop: 15,
+  },
+  image: {
+    marginTop: 70,
+    marginLeft: 180,
+
+  },
   paper: {
     padding: theme.spacing(2),
+    borderRadius: '10px',
+    width: "130%",
   },
   form: {
     display: 'flex',
@@ -21,6 +31,8 @@ export default makeStyles((theme) => ({
   fileInput: {
     width: '97%',
     margin: '10px 0',
+    marginTop: 20,
+    marginBottom: 20,
   },
   buttonSubmit: {
     marginBottom: 10,

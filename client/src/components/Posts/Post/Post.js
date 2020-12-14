@@ -5,7 +5,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import useStyles from './styles';
-//import image from "./image/picture.png";
 
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
@@ -13,11 +12,9 @@ const Post = ({ post, setCurrentId }) => {
     return(
         <Container>
         
-        {/* <img src={image} alt= "Click" height="550" width="450"/> */}
-      
-
             <Card className={classes.card}>
                 <CardMedia className={classes.media} image={post.selectedFile || "https://img.icons8.com/plasticine/100/000000/no-image.png"} title={post.title}/>
+                
                 <div className= {classes.overlay}> 
                     <Typography variant="h6">{post.creator}</Typography>
                     <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
