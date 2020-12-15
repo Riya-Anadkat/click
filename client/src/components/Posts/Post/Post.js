@@ -5,9 +5,19 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { deletePost,likePost } from '../../../actions/posts';
 
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const reload = async() => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      window.location.reload();
+      return false;
+    }
+    
     const a = ' ';
     return(
         <Container>
@@ -35,13 +45,13 @@ const Post = ({ post, setCurrentId }) => {
                 </CardContent>
             </Card>
             <CardActions className={classes.cardActions}>
-                    <Button size="small" color="primary" onClick={() => {}}>
+                    <Button size="small" color="primary" onClick={() => (dispatch(likePost(post._id)), reload())}>
                         <ThumbUpAltIcon fontSize="small"/>
                         {a + post.likeCount + a} 
                         Likes
                         
                     </Button>
-                    <Button size="small" color="primary" onClick={() => {}}>
+                    <Button size="small" color="primary" onClick={() => (dispatch(deletePost(post._id)), reload())}>
                         <DeleteIcon fontSize="small"/>
                         Delete
                     </Button>
@@ -51,4 +61,5 @@ const Post = ({ post, setCurrentId }) => {
 }
 
 export default Post;
+
 
