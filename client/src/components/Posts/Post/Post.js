@@ -13,9 +13,9 @@ const Post = ({ post, setCurrentId }) => {
     const dispatch = useDispatch();
 
     const reload = async() => {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      window.location.reload();
-      return false;
+    //   await new Promise(resolve => setTimeout(resolve, 500));
+    //   window.location.reload();
+    //   return false;
     }
     
     const a = ' ';

@@ -15,13 +15,13 @@ export default makeStyles((theme) => ({
   },
   image: {
     marginTop: 70,
-    marginLeft: 180,
+    marginLeft: 130,
 
   },
   paper: {
     padding: theme.spacing(2),
     borderRadius: '10px',
-    width: "130%",
+    width: "100%",
   },
   form: {
     display: 'flex',

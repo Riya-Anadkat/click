@@ -49,7 +49,7 @@ const Form = ({ currentId, setCurrentId }) => {
         dispatch(updatePost(currentId, postData));
         clear();
         await new Promise(resolve => setTimeout(resolve, 500));
-        reload();
+        //reload();
       }
     };
   
