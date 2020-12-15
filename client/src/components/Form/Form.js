@@ -17,32 +17,55 @@ const Form = ({ currentId, setCurrentId }) => {
     
     const classes = useStyles();
     const dispatch = useDispatch();
-    var isSubmit = false;
+   
 
     useEffect(() => {
         if (post) setPostData(post);
       }, [post]);
 
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        // prevents browser refresh
-        isSubmit = true;
-
-        if (currentId === 0) {
-            dispatch(createPost(postData));
-            clear();
-          } else {
-            dispatch(updatePost(currentId, postData));
-            clear();
-          }
+    // const handleSubmit = async (e) =>{
+    //     e.preventDefault();
+    //     // prevents browser refresh
         
-    }
+    //     if (currentId === 0) {
+    //         dispatch(createPost(postData));
+    //       } else {
+    //         dispatch(updatePost(currentId, postData));
+    //       }
+    //       clear();
+    // }
 
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      if (currentId === 0) {
+        dispatch(createPost(postData));
+        clear();
+        await new Promise(resolve => setTimeout(resolve, 500));
+        reload();
+        //reloads page in half a second to update posts based on edits
+  
+      } else {
+        dispatch(updatePost(currentId, postData));
+        clear();
+        await new Promise(resolve => setTimeout(resolve, 500));
+        reload();
+      }
+    };
+  
+    const reload = () => {
+      window.location.reload();
+      return false;
+    }
+    
+  
     const clear = () => {
         setCurrentId(0);
+        //resent CurrentId
         setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+        //set everything to an empty string
       };
-      console.log(isSubmit);
+      
     return(
         <div>
             
@@ -50,7 +73,7 @@ const Form = ({ currentId, setCurrentId }) => {
             
                 <form autoComplete="off" noValidate className={'${classes.root} ${classes.form}'} 
                 onSubmit={ handleSubmit}> 
-                    <Typography className = {classes.heading} variant= "h6" align ="center" >Create a Click</Typography>
+                    <Typography className = {classes.heading} variant= "h6" align ="center" > {currentId ? 'Edit' : "Create "} a Click</Typography>
                     <TextField className = {classes.textfield} name="creator" variant= "outlined" label= "Name" fullWidth value={postData.creator}
                     onChange={(e) => setPostData({...postData, creator: e.target.value}) }
                     //seting the state using an object 
@@ -77,3 +100,4 @@ const Form = ({ currentId, setCurrentId }) => {
 }
 
 export default Form;
+

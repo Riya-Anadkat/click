@@ -26,5 +26,3 @@ const Posts = ({ setCurrentId }) => {
 }
 
 export default Posts;
-
-

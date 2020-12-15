@@ -8,6 +8,7 @@ export default makeStyles({
     paddingTop: '106.25%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     backgroundBlendMode: 'darken',
+    filter: "grayscale(50%)",
   },
   border: {
     border: 'solid',
